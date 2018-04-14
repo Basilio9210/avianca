@@ -1,0 +1,77 @@
+﻿
+--------------------------------------------------------
+--  Ref Constraints for Table AEROPUERTOS
+--------------------------------------------------------
+
+  ALTER TABLE "AEROPUERTOS" ADD CONSTRAINT "FK_PAIS_AEROPUERTO" FOREIGN KEY ("PAIS")
+	  REFERENCES "PAISES" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table CIUDADES
+--------------------------------------------------------
+
+  ALTER TABLE "CIUDADES" ADD CONSTRAINT "FK_PAIS_CIUDAD" FOREIGN KEY ("PAIS_CIUDAD")
+	  REFERENCES "PAISES" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table EMPLEADOS
+--------------------------------------------------------
+
+  ALTER TABLE "EMPLEADOS" ADD CONSTRAINT "FK_CIUDAD_UBICACION" FOREIGN KEY ("UBICACION")
+	  REFERENCES "CIUDADES" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table LOGS
+--------------------------------------------------------
+
+  ALTER TABLE "LOGS" ADD CONSTRAINT "FK_SEÑAL_IDENTIFICACION_VUELO" FOREIGN KEY ("SEÑAL_IDENTIFICACION")
+	  REFERENCES "VUELOS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PASAJEROS
+--------------------------------------------------------
+
+  ALTER TABLE "PASAJEROS" ADD CONSTRAINT "FK_CIUDAD_PASAJERO" FOREIGN KEY ("CIUDAD_CONTACTO_EMERG")
+	  REFERENCES "CIUDADES" ("ID") ENABLE;
+  ALTER TABLE "PASAJEROS" ADD CONSTRAINT "FK_PASI_PASAJERO" FOREIGN KEY ("PAIS_CONTACTO_EMERG")
+	  REFERENCES "PAISES" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PILOTOS
+--------------------------------------------------------
+
+  ALTER TABLE "PILOTOS" ADD CONSTRAINT "FK_ID_EMPLEADOS" FOREIGN KEY ("ID_EMPLEADO")
+	  REFERENCES "EMPLEADOS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PROGRAMACION
+--------------------------------------------------------
+
+  ALTER TABLE "PROGRAMACION" ADD CONSTRAINT "FK_RUTA_PROGRAMACION" FOREIGN KEY ("ID_RUTA")
+	  REFERENCES "RUTAS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table RUTAS
+--------------------------------------------------------
+
+  ALTER TABLE "RUTAS" ADD CONSTRAINT "FK_AEROPUERTO_DESTINO" FOREIGN KEY ("AEROPUERTO_DESTINO")
+	  REFERENCES "AEROPUERTOS" ("ID") ENABLE;
+  ALTER TABLE "RUTAS" ADD CONSTRAINT "FK_AEROPUERTO_ORIGEN" FOREIGN KEY ("AEROPUERTO_ORIGEN")
+	  REFERENCES "AEROPUERTOS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TIQUETES
+--------------------------------------------------------
+
+  ALTER TABLE "TIQUETES" ADD CONSTRAINT "FK_PASAJERO_TIQUETE" FOREIGN KEY ("ID_PASAJERO")
+	  REFERENCES "PASAJEROS" ("ID") ENABLE;
+  ALTER TABLE "TIQUETES" ADD CONSTRAINT "FK_VUELO_TIQUETE" FOREIGN KEY ("ID_VUELO")
+	  REFERENCES "VUELOS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table TRIPULANTES
+--------------------------------------------------------
+
+  ALTER TABLE "TRIPULANTES" ADD CONSTRAINT "FK_EMPLEADO_TRIPULANTE" FOREIGN KEY ("ID_EMPLEADO")
+	  REFERENCES "EMPLEADOS" ("ID") ENABLE;
+  ALTER TABLE "TRIPULANTES" ADD CONSTRAINT "FK_VUELO_TRIPULANTE" FOREIGN KEY ("ID_VUELO")
+	  REFERENCES "VUELOS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table VUELOS
+--------------------------------------------------------
+
+  ALTER TABLE "VUELOS" ADD CONSTRAINT "FK_ID_AVIONES" FOREIGN KEY ("AERONAVE_ASIGNADA")
+	  REFERENCES "AVIONES" ("ID") ENABLE;
+  ALTER TABLE "VUELOS" ADD CONSTRAINT "FK_RUTA_VUELO" FOREIGN KEY ("ID_RUTA")
+	  REFERENCES "RUTAS" ("ID") ENABLE;
