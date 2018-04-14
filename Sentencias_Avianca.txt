@@ -37,3 +37,92 @@ PASSWORD_LIFE_TIME              100
 SESSIONS_PER_USER               2
 IDLE_TIME                       30
 FAILED_LOGIN_ATTEMPTS           UNLIMITED;
+
+-- 6. CREATE USERS (4)
+
+CREATE USER BASILIO IDENTIFIED BY BASILIO
+DEFAULT TABLESPACE AVIANCA
+PROFILE CLERK;
+
+CREATE USER DUVAN IDENTIFIED BY DUVAN
+DEFAULT TABLESPACE AVIANCA
+PROFILE CLERK;
+
+CREATE USER CRISTIAN IDENTIFIED BY CRISTIAN
+DEFAULT TABLESPACE AVIANCA
+PROFILE DEVELOPMENT;
+
+CREATE USER LUIS IDENTIFIED BY LUIS
+DEFAULT TABLESPACE AVIANCA
+PROFILE DEVELOPMENT;
+
+GRANT CREATE SESSION TO BASILIO, DUVAN, CRISTIAN, LUIS;
+
+-- 7. LOCK USERS
+ALTER USER DUVAN ACCOUNT LOCK;
+
+--------------------------------------------------------
+--  DDL for Sequence SEQ_AEROPUERTOS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_AEROPUERTOS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_AVIONES_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_AVIONES_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_CIUDADES_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_CIUDADES_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_EMPLEADOS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_EMPLEADOS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_LOGS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_LOGS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_PAISES_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_PAISES_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_PASAJEROS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_PASAJEROS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_PILOTOS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_PILOTOS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_PROGRAMACION_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_PROGRAMACION_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_RUTAS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_RUTAS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_TIQUETES_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_TIQUETES_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_TRIPULANTES_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_TRIPULANTES_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
+--------------------------------------------------------
+--  DDL for Sequence SEQ_VUELOS_ID
+--------------------------------------------------------
+
+   CREATE SEQUENCE  "SEQ_VUELOS_ID"  MINVALUE 1 MAXVALUE 9999999999999999999999999999 INCREMENT BY 1 START WITH 1 NOCACHE  NOORDER  NOCYCLE ;
