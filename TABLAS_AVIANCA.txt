@@ -1,0 +1,290 @@
+--------------------------------------------------------
+--  DDL for Table AEROPUERTOS
+--------------------------------------------------------
+
+  CREATE TABLE "AEROPUERTOS" 
+   (	"ID" NUMBER, 
+	"ABREVIATURA_AEROPUERTO" VARCHAR2(255), 
+	"NOMBRE_AEROPUERTO" VARCHAR2(255), 
+	"COORDENADAS" VARCHAR2(255), 
+	"PAIS" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table AVIONES
+--------------------------------------------------------
+
+  CREATE TABLE "AVIONES" 
+   (	"ID" NUMBER, 
+	"MATRICULA" VARCHAR2(255), 
+	"TIPO_AVION" VARCHAR2(255), 
+	"SERIAL" NUMBER, 
+	"EDAD" VARCHAR2(255), 
+	"NUM_ASIENTOS_COMERCIALES" VARCHAR2(255), 
+	"NUM_ASIENTOS_ECONOMICOS" VARCHAR2(255), 
+	"NUM_ASIENTOS_ESTANDAR" VARCHAR2(255)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table CIUDADES
+--------------------------------------------------------
+
+  CREATE TABLE "CIUDADES" 
+   (	"ID" NUMBER, 
+	"NOMBRE_CIUDAD" VARCHAR2(255), 
+	"PAIS_CIUDAD" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table EMPLEADOS
+--------------------------------------------------------
+
+  CREATE TABLE "EMPLEADOS" 
+   (	"ID" NUMBER, 
+	"NOMBRES" VARCHAR2(255), 
+	"APELLIDOS" VARCHAR2(255), 
+	"SEXO" VARCHAR2(255), 
+	"FECHA_NACIMIENTO" DATE, 
+	"ANTIGUEDAD" VARCHAR2(255), 
+	"FECHA_ENTRENAMIENTO" DATE, 
+	"DIRECCION" VARCHAR2(255), 
+	"EMAIL" VARCHAR2(255), 
+	"CELULAR" NUMBER, 
+	"HORAS_DESCANSO" NUMBER, 
+	"ESTADO_EMPLEADO" VARCHAR2(255), 
+	"UBICACION" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table LOGS
+--------------------------------------------------------
+
+  CREATE TABLE "LOGS" 
+   (	"ID" NUMBER, 
+	"MARCA_TIEMPO" TIMESTAMP (6), 
+	"UTC" TIMESTAMP (6), 
+	"SEÑAL_IDENTIFICACION" NUMBER, 
+	"POSICION" VARCHAR2(255), 
+	"ALTITUD" NUMBER(*,0), 
+	"VELOCIDAD" NUMBER(*,0), 
+	"DIRECCION" NUMBER(*,0)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PAISES
+--------------------------------------------------------
+
+  CREATE TABLE "PAISES" 
+   (	"ID" NUMBER, 
+	"NOMBRE_PAIS" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PASAJEROS
+--------------------------------------------------------
+
+  CREATE TABLE "PASAJEROS" 
+   (	"ID" NUMBER, 
+	"NOMBRES" VARCHAR2(255), 
+	"APELLIDOS" VARCHAR2(255), 
+	"DOC_IDENTIFICACION" VARCHAR2(255), 
+	"TIPO_DOCUMENTO" VARCHAR2(255), 
+	"CONTACTO_EMERG" VARCHAR2(255), 
+	"CIUDAD_CONTACTO_EMERG" NUMBER, 
+	"PAIS_CONTACTO_EMERG" NUMBER, 
+	"EMAIL_CONTACTO_EMERG" VARCHAR2(255), 
+	"TELEFONO_CONTACTO_EMERG" VARCHAR2(255)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PILOTOS
+--------------------------------------------------------
+
+  CREATE TABLE "PILOTOS" 
+   (	"ID" NUMBER, 
+	"ID_EMPLEADO" NUMBER, 
+	"NIVEL_INGLES" VARCHAR2(255), 
+	"HORAS_ACOMULADAS" VARCHAR2(255), 
+	"TIPO_LICENCIA" VARCHAR2(255), 
+	"CARGO" VARCHAR2(255)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table PROGRAMACION
+--------------------------------------------------------
+
+  CREATE TABLE "PROGRAMACION" 
+   (	"ID" NUMBER, 
+	"ID_RUTA" NUMBER, 
+	"FECHA" DATE, 
+	"HORA" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table RUTAS
+--------------------------------------------------------
+
+  CREATE TABLE "RUTAS" 
+   (	"ID" NUMBER, 
+	"AEROPUERTO_ORIGEN" NUMBER, 
+	"AEROPUERTO_DESTINO" NUMBER, 
+	"DISTACIA" VARCHAR2(255), 
+	"COD_VUELO" VARCHAR2(255), 
+	"FRECUENCIA" VARCHAR2(255), 
+	"AERONAVE_REQUERIDA" VARCHAR2(255), 
+	"CAN_PROM_HORAS" VARCHAR2(255), 
+	"NRO_TRIPULANTES" VARCHAR2(255)
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TIQUETES
+--------------------------------------------------------
+
+  CREATE TABLE "TIQUETES" 
+   (	"ID" NUMBER, 
+	"ID_VUELO" NUMBER, 
+	"ID_PASAJERO" NUMBER, 
+	"CHECKIN" VARCHAR2(255), 
+	"FECHA_CHECKIN" DATE
+   ) ;
+--------------------------------------------------------
+--  DDL for Table TRIPULANTES
+--------------------------------------------------------
+
+  CREATE TABLE "TRIPULANTES" 
+   (	"ID" NUMBER, 
+	"ID_VUELO" NUMBER, 
+	"ID_EMPLEADO" NUMBER
+   ) ;
+--------------------------------------------------------
+--  DDL for Table VUELOS
+--------------------------------------------------------
+
+  CREATE TABLE "VUELOS" 
+   (	"ID" NUMBER, 
+	"ID_RUTA" NUMBER, 
+	"HORA_ESTIMADA_SALIDA" DATE, 
+	"HORA_ESTIMADA_LLEGADA" DATE, 
+	"HORA_REAL_SALIDA" DATE, 
+	"HORA_REAL_LLEGADA" DATE, 
+	"DURACIÓN_REAL" DATE, 
+	"AERONAVE_ASIGNADA" NUMBER(*,0), 
+	"CANTIDAD_PASAJEROS" NUMBER(*,0)
+   ) ;
+--------------------------------------------------------
+--  Constraints for Table AEROPUERTOS
+--------------------------------------------------------
+
+  ALTER TABLE "AEROPUERTOS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "AEROPUERTOS" MODIFY ("PAIS" NOT NULL ENABLE);
+  ALTER TABLE "AEROPUERTOS" MODIFY ("COORDENADAS" NOT NULL ENABLE);
+  ALTER TABLE "AEROPUERTOS" MODIFY ("NOMBRE_AEROPUERTO" NOT NULL ENABLE);
+  ALTER TABLE "AEROPUERTOS" MODIFY ("ABREVIATURA_AEROPUERTO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table AVIONES
+--------------------------------------------------------
+
+  ALTER TABLE "AVIONES" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "AVIONES" MODIFY ("EDAD" NOT NULL ENABLE);
+  ALTER TABLE "AVIONES" MODIFY ("SERIAL" NOT NULL ENABLE);
+  ALTER TABLE "AVIONES" MODIFY ("TIPO_AVION" NOT NULL ENABLE);
+  ALTER TABLE "AVIONES" MODIFY ("MATRICULA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table CIUDADES
+--------------------------------------------------------
+
+  ALTER TABLE "CIUDADES" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "CIUDADES" MODIFY ("PAIS_CIUDAD" NOT NULL ENABLE);
+  ALTER TABLE "CIUDADES" MODIFY ("NOMBRE_CIUDAD" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table EMPLEADOS
+--------------------------------------------------------
+
+  ALTER TABLE "EMPLEADOS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "EMPLEADOS" ADD CHECK (ESTADO_EMPLEADO IN('EN VUELO', 'ACTIVO', 'INACTIVO', 'JUBILADO', 'SUSPENDIDO', 'DESPEDIDO', 'ENTRENAMIENTO', 'LICENCIA', 'VACACIONES')) ENABLE;
+  ALTER TABLE "EMPLEADOS" MODIFY ("UBICACION" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("ESTADO_EMPLEADO" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("HORAS_DESCANSO" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("CELULAR" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("DIRECCION" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("FECHA_ENTRENAMIENTO" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("ANTIGUEDAD" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("FECHA_NACIMIENTO" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("SEXO" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("APELLIDOS" NOT NULL ENABLE);
+  ALTER TABLE "EMPLEADOS" MODIFY ("NOMBRES" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table LOGS
+--------------------------------------------------------
+
+  ALTER TABLE "LOGS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "LOGS" MODIFY ("DIRECCION" NOT NULL ENABLE);
+  ALTER TABLE "LOGS" MODIFY ("VELOCIDAD" NOT NULL ENABLE);
+  ALTER TABLE "LOGS" MODIFY ("ALTITUD" NOT NULL ENABLE);
+  ALTER TABLE "LOGS" MODIFY ("POSICION" NOT NULL ENABLE);
+  ALTER TABLE "LOGS" MODIFY ("SEÑAL_IDENTIFICACION" NOT NULL ENABLE);
+  ALTER TABLE "LOGS" MODIFY ("UTC" NOT NULL ENABLE);
+  ALTER TABLE "LOGS" MODIFY ("MARCA_TIEMPO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PAISES
+--------------------------------------------------------
+
+  ALTER TABLE "PAISES" MODIFY ("NOMBRE_PAIS" NOT NULL ENABLE);
+  ALTER TABLE "PAISES" ADD PRIMARY KEY ("ID") ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PASAJEROS
+--------------------------------------------------------
+
+  ALTER TABLE "PASAJEROS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "PASAJEROS" MODIFY ("TELEFONO_CONTACTO_EMERG" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("EMAIL_CONTACTO_EMERG" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("PAIS_CONTACTO_EMERG" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("CIUDAD_CONTACTO_EMERG" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("CONTACTO_EMERG" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("TIPO_DOCUMENTO" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("DOC_IDENTIFICACION" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("APELLIDOS" NOT NULL ENABLE);
+  ALTER TABLE "PASAJEROS" MODIFY ("NOMBRES" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PILOTOS
+--------------------------------------------------------
+
+  ALTER TABLE "PILOTOS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "PILOTOS" ADD CHECK (CARGO IN('Comandante', 'Primer Oficial')) ENABLE;
+  ALTER TABLE "PILOTOS" ADD CHECK (TIPO_LICENCIA IN('CLP', 'ATPL', 'IFR', 'ME')) ENABLE;
+  ALTER TABLE "PILOTOS" ADD CHECK (NIVEL_INGLES IN('Nivel 1 Pre-elementary', 'Nivel 2 Elementary', 'Nivel 3 Pre-Operational', 'Nivel 4 Operational', 'Nivel 5 Extended', 'Nivel 6 Expert')) ENABLE;
+  ALTER TABLE "PILOTOS" MODIFY ("CARGO" NOT NULL ENABLE);
+  ALTER TABLE "PILOTOS" MODIFY ("TIPO_LICENCIA" NOT NULL ENABLE);
+  ALTER TABLE "PILOTOS" MODIFY ("NIVEL_INGLES" NOT NULL ENABLE);
+  ALTER TABLE "PILOTOS" MODIFY ("ID_EMPLEADO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table PROGRAMACION
+--------------------------------------------------------
+
+  ALTER TABLE "PROGRAMACION" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "PROGRAMACION" MODIFY ("ID_RUTA" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table RUTAS
+--------------------------------------------------------
+
+  ALTER TABLE "RUTAS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "RUTAS" MODIFY ("NRO_TRIPULANTES" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("CAN_PROM_HORAS" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("AERONAVE_REQUERIDA" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("FRECUENCIA" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("COD_VUELO" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("DISTACIA" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("AEROPUERTO_DESTINO" NOT NULL ENABLE);
+  ALTER TABLE "RUTAS" MODIFY ("AEROPUERTO_ORIGEN" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TIQUETES
+--------------------------------------------------------
+
+  ALTER TABLE "TIQUETES" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "TIQUETES" MODIFY ("ID_PASAJERO" NOT NULL ENABLE);
+  ALTER TABLE "TIQUETES" MODIFY ("ID_VUELO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table TRIPULANTES
+--------------------------------------------------------
+
+  ALTER TABLE "TRIPULANTES" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "TRIPULANTES" MODIFY ("ID_EMPLEADO" NOT NULL ENABLE);
+  ALTER TABLE "TRIPULANTES" MODIFY ("ID_VUELO" NOT NULL ENABLE);
+--------------------------------------------------------
+--  Constraints for Table VUELOS
+--------------------------------------------------------
+
+  ALTER TABLE "VUELOS" ADD PRIMARY KEY ("ID") ENABLE;
+  ALTER TABLE "VUELOS" MODIFY ("CANTIDAD_PASAJEROS" NOT NULL ENABLE);
+  ALTER TABLE "VUELOS" MODIFY ("AERONAVE_ASIGNADA" NOT NULL ENABLE);
+  ALTER TABLE "VUELOS" MODIFY ("ID_RUTA" NOT NULL ENABLE);
