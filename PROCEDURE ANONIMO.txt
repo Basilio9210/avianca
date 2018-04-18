@@ -1,0 +1,23 @@
+DECLARE
+   --GLOBAL VARIABLE
+  var1 number := 1;
+  start_time number := 0;
+  end_time number := 0;
+  
+BEGIN
+  start_time:= DBMS_UTILITY.get_time;
+  DBMS_OUTPUT.PUT_LINE('GLOBAL VARIABLE VAR1: '|| var1);
+  
+    DECLARE
+    --LOCAL VARIABLE
+    var1 number := 15;
+    BEGIN
+     DBMS_OUTPUT.PUT_LINE('LOCAL VARIABLE VAR1: '|| var1);
+    END;
+    
+     DBMS_OUTPUT.PUT_LINE('GLOBAL VARIABLE VAR1: '|| var1);
+     end_time :=  DBMS_UTILITY.get_time;
+     DBMS_OUTPUT.PUT_LINE('time elapsed: ');
+     DBMS_OUTPUT.PUT_LINE( end_time - start_time || ' miliseconds ');
+
+END;
