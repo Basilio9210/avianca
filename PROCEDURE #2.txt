@@ -1,0 +1,17 @@
+CREATE OR REPLACE FUNCTION findMin (x in number, y in number)
+RETURN number IS
+z number := 0;
+
+BEGIN
+    IF x > y THEN
+     z:= y;
+    ELSE
+     z:=x;
+    END IF;
+
+  RETURN z;
+END;
+
+BEGIN
+ DBMS_OUTPUT.PUT_LINE('Min 20 - 40: '|| findMin(20,40) );
+END; 
